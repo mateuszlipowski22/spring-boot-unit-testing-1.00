@@ -85,6 +85,13 @@ class DemoUtilsTest {
     }
 
     @Test
+    @DisplayName("Multiply")
+    @Order(3)
+    void testMultiply(){
+        assertEquals(12, demoUtils.multiply(3, 4), "3*4 must be 12");
+    }
+
+    @Test
     @DisplayName("Timeout")
     @Order(1)
     void testTimeout(){
