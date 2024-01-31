@@ -10,6 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 //@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 //@DisplayNameGeneration(DisplayNameGenerator.Simple.class)
 //@DisplayNameGeneration(DisplayNameGenerator.IndicativeSentences.class)
+
+//@TestMethodOrder(MethodOrdere.MethodName.class)
+//@TestMethodOrder(MethodOrderer.DisplayName.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DemoUtilsTest {
 
     DemoUtils demoUtils;
@@ -74,6 +78,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("Throw and not throw")
+    @Order(-1)
     void testThrowAndNotThrow(){
         assertThrows(Exception.class, ()->{demoUtils.throwException(-1);},"Should throw exception");
         assertDoesNotThrow(()->{demoUtils.throwException(1);},"Should not throw exception");
@@ -81,6 +86,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("Timeout")
+    @Order(1)
     void testTimeout(){
         assertTimeoutPreemptively(Duration.ofSeconds(3), ()->{demoUtils.checkTimeout();});
     }
