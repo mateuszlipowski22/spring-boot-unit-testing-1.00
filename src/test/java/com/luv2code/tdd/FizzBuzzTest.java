@@ -49,4 +49,20 @@ class FizzBuzzTest {
     void testSmallDataTest(int value, String expected){
         assertEquals(expected, FizzBuzz.compute(value),String.format("Should return %s", expected));
     }
+
+    @DisplayName("Testing with medium data file")
+    @ParameterizedTest(name="value={0}, expected={1}")
+    @CsvFileSource(resources = "/medium-test-data.csv")
+    @Order(6)
+    void testMediumDataTest(int value, String expected){
+        assertEquals(expected, FizzBuzz.compute(value),String.format("Should return %s", expected));
+    }
+
+    @DisplayName("Testing with large data file")
+    @ParameterizedTest(name="value={0}, expected={1}")
+    @CsvFileSource(resources = "/large-test-data.csv")
+    @Order(7)
+    void testLargeDataTest(int value, String expected){
+        assertEquals(expected, FizzBuzz.compute(value),String.format("Should return %s", expected));
+    }
 }
